@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block custom_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/feed_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+	
+	
+	
+	<p class="title">View All Lastest Product Posts Here!</p>
+	
+	
+	{% for entry in post reversed %}
+<div class="post">
+   <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
+   <div class="post_body">
+      <div class="user">
+         <img src="{% static 'img/user_icon.png' %}" class="user_icon">
+         <div>
+            
+            <p>@{{entry.user}}</p>
+         </div>
+      </div>
+      <h5 class="card-title"><b>Product: </b>{{entry.product_name}}</h5>
+      <p><b>Price: </b> ${{entry.product_price}} USD</p>
+      <p><b>Bought From: </b>{{entry.product_store}}</p>
+      <p><b>Comment From Buyer: </b>{{entry.comment}}</p>
+      <a href="{{entry.product_link}}" class="btn btn-primary">Go To Product Now!</a>
+   </div>
+   <div class="logo">
+      <p><b>Date of Post: </b>{{entry.post_date}}</p>
+      <img src="{% static 'img/shopping.png' %}" class="logo_img">
+   </div>
+</div>
+</body>
+	{% endfor %}
+	
+
+
+{% endblock %}

@@ -1,0 +1,57 @@
+
+{% extends 'base.html' %}
+{% load static %}
+<!-- 	{%block navbar%}
+		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+	  <a class="navbar-brand" href="http://127.0.0.1:8000/home">Home</a>
+	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+	    <span class="navbar-toggler-icon"></span>
+	  </button>
+	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+	    <ul class="navbar-nav">
+	      <li class="nav-item active">
+	        <a class="nav-link" href="http://127.0.0.1:8000/about">About<span class="sr-only">(current)</span></a>
+	      </li>
+	      <li class="nav-item">
+	        <a class="nav-link" href="http://127.0.0.1:8000/preview">Preview</a>
+	      </li>
+	     </ul>
+	  </div>
+	</nav>
+
+	{% endblock %} -->
+
+	{% block custom_css%}
+		<link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
+	{% endblock %}
+
+{%block content%}
+<h1>Welcome to ShopHot!</h1>
+	<h2>Get Started By Logging in Below</h2>
+
+	<form action="" method="POST">
+		{% csrf_token %}
+		<div class="entry">
+			<div class="user">
+				<p class="user_name">User Name:</p>
+	            <input type="text" name="username" placeholder="user_name">
+	        </div>
+	        <div class="password">
+				<p class="user_pass">Password:</p>
+	            <input type="password" name="password" placeholder="password">
+	        </div>
+	        <div class="submit">
+	            <input type="submit" name="POST!" value="LOGIN" class="login">
+	        </div>
+	        <div class=sign_up>
+	            <a class="join_button" href="http://127.0.0.1:8000/new_account">Create Account</a> 
+	            <a class="forgot_button" href="">Forgot Password</a>
+	        </div>
+        </div>
+
+
+
+
+	</form>
+
+{% endblock %}

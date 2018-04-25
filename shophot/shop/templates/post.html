@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block custom_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/post_styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<body>
+   <p class="title">Please fill in all fields below and then click 'POST!' to post your product</p>
+   <form action="" method="post">
+      {% csrf_token %}
+      <div class="name_price">
+         <div class="proname">
+            <span><p>Product Name:</p></span>
+            <input type="text" name="pro_name" placeholder="Enter the name of the product">
+         </div>
+         <div class="proprice">
+            <span><p>Price:</p></span>
+            <input type="number" step="0.01" name="pro_price" placeholder="Enter the price of the product">
+         </div>
+      </div>
+      <div class="store_link">
+         <div class="prostore">
+            <span><p>Store/Seller:</p></span>
+            <input type="text" name="pro_store" placeholder="Enter where you purchased the product">
+         </div>
+         <div class="prolink">
+            <span><p>Link:</p></span>
+            <input type="text" name="pro_link" placeholder="Please provide the link if purchased online">
+         </div>
+      </div>
+      <div class="comment">
+        <span><p>Comment:</p></span>
+        <textarea rows = "4" cols = "50" type="text" name="pro_comment" placeholder="Add any additional comments here"></textarea>
+       </div>
+      <div class="post_button">
+      <input type="submit" name="POST!" value="POST!">
+  </div>
+   </form>
+   <div>
+   	
+   	
+   </div>
+</body>
+
+
+
+
+
+
+{% endblock %}

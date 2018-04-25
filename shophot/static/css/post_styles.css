@@ -1,0 +1,34 @@
+body {
+	text-align: center;
+	background-color: white;
+}
+
+.title {
+	padding-top: 50px;
+	padding-bottom: 50px;
+	text-decoration: underline;
+	font-size: 2em;
+	font-family: sans-serif;
+}
+form {
+	text-align: center;
+	width: 75%;
+	margin: auto;
+	text-align: center;
+	border: 3px solid #000044;
+	box-shadow: 5px 10px rgba(0, 0, 68, 0.5);
+	border-radius: 25px;		
+	background-color: rgb(255,255,255);
+	margin-bottom: 300px;
+}
+p {
+	padding-top: 20px;
+}
+input {
+	width: 50%;
+}
+
+.post_button {
+	padding-bottom: 20px;
+	padding-top: 20px;
+}
