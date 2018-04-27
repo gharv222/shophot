@@ -1,6 +1,41 @@
 {% extends 'base.html' %}
-{% block content %}
-<p>Home page</p>
-{{current_user}}
-
+{% load static %}
+{% block custom_css%}
+<link rel="stylesheet" type="text/css" href="{% static 'css/account_home.css' %}">
 {% endblock %}
+
+
+{% block content %}
+<p class="Welcome">Welcome {{current_user}}! See Your Posts Below</p>
+	<div class="sidenav">
+		<p class="accountinfo">MyAccountInfo</p>
+		<p class="else">Name: </p>
+  		<p class="else">User Name: {{request.user}}</p>
+  		<p class="else">Email Address: {{request.user.email}}</p>
+  		<a class="Settings" href="#">Manage Account Settings</a>
+  	</div>
+
+	
+
+	<div class="row">
+		<div class="my_posts">
+			<div class="post">
+	   			{% for entry in my_posts reversed %}	   			
+	   				<div class="card">
+  						<h5 class="card-header">@{{ entry.user }}</h5>
+  						<div class="card-body">
+    						<h5 class="card-title">Product: <b>{{entry.product_name}}</b></h5>
+    						<p class="card-text">Price: <b>{{entry.product_price}}</b></p>
+    						<p class="card-text">Seller: <b>{{entry.product_store}}</b></p>
+    						<p class="card-text" id="comm">Buyer Comments:</p>
+    						<p class="comment">{{entry.comment}}</p>
+    						<a href="{{entry.product_link}}" class="btn btn-primary">View Product</a>
+  						</div>
+					</div>
+	   			{% endfor %}   
+			</div>
+		</div>
+	</div>
+{% endblock %}
+	
+

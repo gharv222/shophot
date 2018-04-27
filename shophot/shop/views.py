@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from datetime import datetime
 from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+from django.shortcuts import HttpResponse, HttpResponseRedirect
 # Create your views here.
 
 from .models import product_post, account
@@ -12,6 +14,8 @@ def feed(request):
 	"""
 	Renders the product feed of all product entries
 	"""
+	if (request.user.is_authenticated)==False:
+		return HttpResponseRedirect('http://127.0.0.1:8000/authentication_error')
 	post = product_post.objects.all()
 	context = {'post': post}
 
@@ -21,8 +25,11 @@ def home(request):
 	"""
 	Renders a home page for a specific user
 	"""
+	if (request.user.is_authenticated)==False:
+		return HttpResponseRedirect('http://127.0.0.1:8000/authentication_error')
 	current_user = request.user
-	context = {'current_user':current_user}
+	my_posts = product_post.objects.filter(user=current_user)
+	context = {'current_user':current_user, 'my_posts':my_posts}
 	return render(request, 'shophome.html', context)
 
 
@@ -30,6 +37,8 @@ def post(request):
 	"""
 	Renders a a page in which a user can create a post entry that save to the database
 	"""
+	if (request.user.is_authenticated)==False:
+		return HttpResponseRedirect('http://127.0.0.1:8000/authentication_error')
 	if request.method == "POST":
 		post_ = request.POST
 

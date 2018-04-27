@@ -14,10 +14,26 @@
 	
 	<p class="title">View All Lastest Product Posts Here!</p>
 	
-	
+	<div class="row">
+      <div class="my_posts">
+         <div class="post">
 	{% for entry in post reversed %}
-<div class="post">
-   <!-- <img class="card-img-top" src=".../100px180/" alt="Card image cap"> -->
+   <div class="card">
+                  
+                  <h5 class="card-header"><img src="{% static 'img/user_icon.png' %}" class="user_icon">FName LName  Posted on: {{entry.post_date}}</h5>
+                  <!-- <h5 class="card-header">User: {{entry.user}}</h5> -->
+                  <div class="card-body">
+                     <h5 class="card-title">User: <b style="color: blue">@{{entry.user}}</b></h5>
+                     <h5 class="card-title">Product: <b>{{entry.product_name}}</b></h5>
+                     <p class="card-text">Price: <b>{{entry.product_price}}</b></p>
+                     <p class="card-text">Seller: <b>{{entry.product_store}}</b></p>
+                     <p class="card-text" id="comm">Buyer Comments:</p>
+                     <p class="comment">{{entry.comment}}</p>
+                     <a href="{{entry.product_link}}" class="btn btn-primary">View Product</a>
+                  </div>
+               </div>
+<!-- <div class="post">
+   
    <div class="post_body">
       <div class="user">
          <img src="{% static 'img/user_icon.png' %}" class="user_icon">
@@ -37,8 +53,13 @@
       <img src="{% static 'img/shopping.png' %}" class="logo_img">
    </div>
 </div>
-</body>
+</body> -->
 	{% endfor %}
+</div>
+</div>
+</div>
+
+   </body>
 	
 
 

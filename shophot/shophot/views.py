@@ -30,10 +30,6 @@ def signout(request):
 	context = {}
 	return HttpResponseRedirect('http://127.0.0.1:8000/home')
 
-def preview(request):
-	context = {}
-	return render(request, 'preview.html', context)
-
 def new_account(request):
 	"""
 	Creates a new account, saves infor to account table in database
@@ -48,4 +44,11 @@ def new_account(request):
 		return HttpResponseRedirect('http://127.0.0.1:8000/home')
 	
 	return render(request, 'new_account.html', context)
+
+def error(request):
+	"""
+	dsiplays a page informing user they must be logged in 
+	"""
+	context = {}
+	return render(request,'error.html', context)
 

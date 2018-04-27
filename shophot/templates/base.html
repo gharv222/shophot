@@ -27,11 +27,14 @@
 	      </li>
 	    </ul>
 	  </div>
+	  <p class="current_user"><b>Current User:</b> {{request.user}}</p>
+	  <a type="button" class="logout" href="http://127.0.0.1:8000/signout">LOGOUT</a>
+	  
 	</nav>
 	<div>
-	<p class="current_user"><b>Current User:</b> {{request.user}}</p>
+	
 	</div>
-	<a type="button" class="logout" href="http://127.0.0.1:8000/signout">LOGOUT</a>
+	
 	
 	{% block content %}
 	<h1>This is in base.html</h1>
