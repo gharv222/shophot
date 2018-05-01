@@ -6,11 +6,11 @@ from shop.models import account
 
 
 def home(request):
-	
+
 	context = {}
-	# if request.user.is_authenticated:
-	# 	return HttpResponseRedirect('http://127.0.0.1:8000/shop/home')
-	
+	if (request.user.is_authenticated):
+		return HttpResponseRedirect('http://127.0.0.1:8000/shop/home')
+
 	if request.method == "POST":
 		login_data = request.POST
 		user = authenticate(username=login_data['username'], password=login_data['password'])
@@ -20,6 +20,8 @@ def home(request):
 			
 		else:
 			return HttpResponseRedirect('http://127.0.0.1:8000/home')
+
+
 
 			
 				
@@ -34,14 +36,27 @@ def new_account(request):
 	"""
 	Creates a new account, saves infor to account table in database
 	"""
-	context = {}
+	user_exists = ''
+	fill_in = ''
+
 	if request.method == "POST":
 		user = request.POST
-		
-		new_user = User.objects.create_user(user['username'], 
-			user['email'], user['password'])
-		new_user.save()
-		return HttpResponseRedirect('http://127.0.0.1:8000/home')
+		for item in user:
+			if user[item] == '':
+				fill_in = 'All fields are Required!'
+				context = {'user_exists':user_exists, 'fill_in':fill_in}
+				return render(request, 'new_account.html', context)
+		if User.objects.filter(username=user['username']).exists():
+			user_exists = 'UserName ' + user['username'] + ' already exists'			
+		else:
+			new_user = User.objects.create_user(user['username'], 
+				user['email'], user['password'])
+			new_user.last_name = user['lname']
+			new_user.first_name = user['fname']
+			new_user.save()
+			return HttpResponseRedirect('http://127.0.0.1:8000/home')			
+
+	context = {'user_exists':user_exists, 'fill_in':fill_in}
 	
 	return render(request, 'new_account.html', context)
 

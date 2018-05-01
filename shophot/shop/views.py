@@ -27,9 +27,9 @@ def home(request):
 	"""
 	if (request.user.is_authenticated)==False:
 		return HttpResponseRedirect('http://127.0.0.1:8000/authentication_error')
-	current_user = request.user
-	my_posts = product_post.objects.filter(user=current_user)
-	context = {'current_user':current_user, 'my_posts':my_posts}
+	
+	my_posts = product_post.objects.filter(user=request.user)
+	context = {'my_posts':my_posts}
 	return render(request, 'shophome.html', context)
 
 
@@ -42,8 +42,8 @@ def post(request):
 	if request.method == "POST":
 		post_ = request.POST
 
-		new_post = product_post(product_name = post_['pro_name'], user = request.user,
-					product_price = post_['pro_price'],product_store = post_['pro_store'],
+		new_post = product_post(fname = request.user.first_name, lname = request.user.last_name, product_name = post_['pro_name'], 
+					user = request.user, product_price = post_['pro_price'],product_store = post_['pro_store'],
 					product_link = post_['pro_link'], comment = post_['pro_comment'], 
 					post_date = datetime.now()) 
 		new_post.save()

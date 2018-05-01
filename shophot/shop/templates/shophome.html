@@ -6,10 +6,11 @@
 
 
 {% block content %}
-<p class="Welcome">Welcome {{current_user}}! See Your Posts Below</p>
+<title>ShopHot | MyAccount</title>
+<p class="Welcome">Welcome {{request.user.first_name}} {{request.user.last_name}}! See Your Posts Below</p>
 	<div class="sidenav">
 		<p class="accountinfo">MyAccountInfo</p>
-		<p class="else">Name: </p>
+		<p class="else">Name: {{request.user.first_name}} {{request.user.last_name}}</p>
   		<p class="else">User Name: {{request.user}}</p>
   		<p class="else">Email Address: {{request.user.email}}</p>
   		<a class="Settings" href="#">Manage Account Settings</a>

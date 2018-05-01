@@ -8,6 +8,7 @@
 {% endblock %}
 
 {% block content %}
+<title>ShopHot | Feed</title>
 <body>
 	
 	
@@ -20,8 +21,8 @@
 	{% for entry in post reversed %}
    <div class="card">
                   
-                  <h5 class="card-header"><img src="{% static 'img/user_icon.png' %}" class="user_icon">FName LName  Posted on: {{entry.post_date}}</h5>
-                  <!-- <h5 class="card-header">User: {{entry.user}}</h5> -->
+                  <h5 class="card-header"><img src="{% static 'img/user_icon.png' %}" class="user_icon">{{entry.fname}} {{entry.lname}}  Posted on: {{entry.post_date}}</h5>
+                  
                   <div class="card-body">
                      <h5 class="card-title">User: <b style="color: blue">@{{entry.user}}</b></h5>
                      <h5 class="card-title">Product: <b>{{entry.product_name}}</b></h5>
@@ -29,31 +30,9 @@
                      <p class="card-text">Seller: <b>{{entry.product_store}}</b></p>
                      <p class="card-text" id="comm">Buyer Comments:</p>
                      <p class="comment">{{entry.comment}}</p>
-                     <a href="{{entry.product_link}}" class="btn btn-primary">View Product</a>
+                     <a href="https://{{entry.product_link}}" class="btn btn-primary">View Product</a>
                   </div>
                </div>
-<!-- <div class="post">
-   
-   <div class="post_body">
-      <div class="user">
-         <img src="{% static 'img/user_icon.png' %}" class="user_icon">
-         <div>
-            
-            <p>@{{entry.user}}</p>
-         </div>
-      </div>
-      <h5 class="card-title"><b>Product: </b>{{entry.product_name}}</h5>
-      <p><b>Price: </b> ${{entry.product_price}} USD</p>
-      <p><b>Bought From: </b>{{entry.product_store}}</p>
-      <p><b>Comment From Buyer: </b>{{entry.comment}}</p>
-      <a href="{{entry.product_link}}" class="btn btn-primary">Go To Product Now!</a>
-   </div>
-   <div class="logo">
-      <p><b>Date of Post: </b>{{entry.post_date}}</p>
-      <img src="{% static 'img/shopping.png' %}" class="logo_img">
-   </div>
-</div>
-</body> -->
 	{% endfor %}
 </div>
 </div>

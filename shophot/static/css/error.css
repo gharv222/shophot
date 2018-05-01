@@ -1,14 +1,14 @@
-h1 {
+.message {
 	padding-top: 5%;
 	margin: auto;
 	text-align: center;
 }
-a {
+.link {
 	margin: auto;
 	padding: 10px;
 	font-size: 25px;
 	text-align: center;
 }
-div{
+.content{
 	text-align: center;
 }

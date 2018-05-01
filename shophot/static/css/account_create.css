@@ -8,8 +8,12 @@ form{
 }
 h1 {
 	padding-top: 10px;
+	padding-bottom: 5px;
 }
-
+.warn{
+	color: red;
+	font-size: 25px;
+}
 .entry { 
 	border: 3px solid #000000;
 	width: 30%;
@@ -19,7 +23,19 @@ h1 {
 
 
 }
+.user_exists{
+	color: red;
+	font-size: 25px;
+}
+.lastname {
+	margin: none;
+	padding-top: 25px;
+}
 .user_pass {
+	margin: none;
+	padding-top: 25px;
+}
+.user_name {
 	margin: none;
 	padding-top: 25px;
 }

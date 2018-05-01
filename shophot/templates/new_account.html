@@ -1,39 +1,31 @@
 {% extends 'base.html' %}
 {% load static %}
-	{%block navbar%}
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	  <a class="navbar-brand" href="http://127.0.0.1:8000/home">Home</a>
-	  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-	    <span class="navbar-toggler-icon"></span>
-	  </button>
-	  <div class="collapse navbar-collapse" id="navbarNavDropdown">
-	    <ul class="navbar-nav">
-	      <li class="nav-item active">
-	        <a class="nav-link" href="http://127.0.0.1:8000/about">About<span class="sr-only">(current)</span></a>
-	      </li>
-	      <li class="nav-item">
-	        <a class="nav-link" href="http://127.0.0.1:8000/preview">Preview</a>
-	      </li>
-	     </ul>
-	  </div>
-	</nav>
-	{% endblock %}
 {% block custom_css%}
 <link rel="stylesheet" type="text/css" href="{% static 'css/account_create.css' %}">
 {% endblock %}
 
 {%block content%}
-<h1>Creat an account with ShopHot by completing all three fields below</h1>
-	<h1>Click "Creat Account" when finished</h1>
+<title>ShopHot | NewAccount</title>
+<h1>Create an account with ShopHot</h1>
+<p class="user_exists">{{ user_exists }}</p>
+<p class="warn">{{ fill_in }}</p>
 	<form action="" method="post">
 		{% csrf_token %}
 		<div class="entry">
+			<div class="fname">
+				<p class="firstname">First Name:</p>
+	            <input type="text" name="fname" placeholder="first name">
+	        </div>
+	        <div class="lname">
+				<p class="lastname">Last Name:</p>
+	            <input type="text" name="lname" placeholder="last name">
+	        </div>
 			<div class="user">
 				<p class="user_name">Create a User Name:</p>
 	            <input type="text" name="username" placeholder="user_name">
 	        </div>
 	        <div class="email">
-				<p class="user_name">Enter your Email address:</p>
+				<p class="user_email">Enter your Email address:</p>
 	            <input type="text" name="email" placeholder="jondoe@gmail.com">
 	        </div>
 	        <div class="password">
